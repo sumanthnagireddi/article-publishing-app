@@ -1,0 +1,25 @@
+<div class="py-2">
+    <div *ngIf="category() == 'published'">
+        <p class="font-medium text-lg">My Publications</p>
+        <p class="line-clamp-3 text-xs text-gray-600">Showing all the published articles </p>
+    </div>
+    <div *ngIf="category() == 'drafts'">
+        <p class="font-medium text-lg">My Drafts</p>
+        <p class="line-clamp-3 text-xs text-gray-600">Showing all the drafted articles </p>
+    </div>
+    <div *ngIf="category() == 'scheduled'">
+        <p class="font-medium text-lg">My Scheduled articles</p>
+        <p class="line-clamp-3 text-xs text-gray-600">Showing all the scheduled articles </p>
+    </div>
+    <div class="py-2 ">
+        <ng-container *ngIf="articles&&articles.length>0;else nodata">
+            <div class="my-2" *ngFor="let item of articles">
+                <app-article-card [data]="item" />
+            </div>
+        </ng-container>
+        <ng-template #nodata>
+            <app-no-data />
+        </ng-template>
+
+    </div>
+</div>

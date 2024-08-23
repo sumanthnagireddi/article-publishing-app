@@ -1,0 +1,13 @@
+<div  class="relative">
+    <app-navbar></app-navbar>
+    <div class="flex">
+      <app-sidebar></app-sidebar>
+      <div class="px-12  py-6 flex-1">
+        <router-outlet />
+      </div>
+    </div>
+    <div *ngIf="loaderService.showLoader | async">
+      <app-loader />
+    </div>
+  </div>
+  

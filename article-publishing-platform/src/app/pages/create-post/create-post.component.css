@@ -1,0 +1,13 @@
+::ng-deep .ql-snow{
+    border-radius: 12px !important;
+}
+::ng-deep .ql-container{
+    margin-top: 20px !important;
+    border:1px solid #ccc !important;
+    min-height: 50vh !important;
+}
+::ng-deep .ql-editor img{
+    border-radius: 20px !important;
+    height: 200px !important;
+    width: auto !important;
+}

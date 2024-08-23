@@ -1,0 +1,33 @@
+1. Auth 
+    -- Using Firebase      -- authentication methods added - UI needs to be created
+2. Storage
+    -- Using Firestore     -- as of now using json-server 
+3. Home Screen
+    -- list of articles with title, thumbnail, brief description, author name, and publish date
+    -- Pagination
+    -- Sorting
+4. Search Functionality
+    -- Allow users to search articles by keywords, author names.
+5. Featured Articles
+    -- Highlight featured articles or editor's picks at the top of the home page
+6. Author Directory
+    -- List all authors with their profile pictures and brief bios.
+    -- Option to search authors by name
+7.  Article Details
+    -- Display the full article content with title, author name, publish date;
+    -- Show author bio and other articles by the same author.
+    -- Suggest related articles at the end of the article
+8. Comment Section
+    -- Allow users to post comments on articles.
+    -- Enable threaded comments (replies to comments)
+    -- Option to sort comments by newest, oldest, or most liked
+9. Create a New Post
+    -- Provide a rich text editor (use any open source library ) with formatting options (bold, italic, underline, lists, etc.).
+    -- Allow users to add images, videos, and links to their articles
+    -- Save articles as drafts before publishing
+    -- Option to schedule posts for future publication
+10. Tags
+    -- Allow authors to add tags to their articles.
+    -- Enable users to search and explore articles by tags.
+    -- Display a list of popular tags.
+    -- Allow users to browse articles by tags

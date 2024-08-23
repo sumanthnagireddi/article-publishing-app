@@ -1,0 +1,19 @@
+<article (click)="navigate(data()?._id)" class="group cursor-pointer relative shadow-sm  border-gray-200 bg-white rounded-xl border">
+    <img alt=""
+        [src]="data()?.articlePhoto"
+        class="h-40 w-full rounded-t-xl object-cover shadow-xl transition group-hover:grayscale-[50%] dark:shadow-gray-700/25" />
+
+    <div   class="p-4">
+        <a >
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                <!-- {{featuredData()?.name}} -->
+                {{data()?.title}}
+            </h3>
+        </a>
+
+        <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+            {{data()?.description}}
+        </p>
+    </div>
+
+</article>

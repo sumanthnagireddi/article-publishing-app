@@ -1,0 +1,138 @@
+<div class="bg-white">
+    <header class="border-b border-gray-200/75 ">
+        <nav class="flex items-center justify-between px-6 py-4" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <p class="text-xl font-semibold text-primary">Online Publishing Platform</p>
+            </div>
+            <div class="flex lg:hidden">
+                <button (click)="openMobileMenu=true" type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            <!-- <div class="hidden lg:flex lg:gap-x-12 pt-1">
+                <a [routerLink]="'create-post'"
+                    [routerLinkActive]="'text-primary text-lg border-b-2 border-primary font-bold'"
+                    class="text-sm font-semibold leading-6 text-gray-900">Rent Home</a>
+                <a [routerLink]="'my-listings'"
+                    [routerLinkActive]="'text-primary text-lg border-b-2 border-primary font-bold'"
+                    class="text-sm font-semibold leading-6 text-gray-900">My Listings</a>
+                <a [routerLink]="'my-favorites'"
+                    [routerLinkActive]="'text-primary text-lg border-b-2 border-primary font-bold'"
+                    class="text-sm font-semibold leading-6 text-gray-900">My favorites</a>
+                <a [routerLink]="'my-ratings'"
+                    [routerLinkActive]="'text-primary text-lg border-b-2 border-primary font-bold'"
+                    class="text-sm font-semibold leading-6 text-gray-900">My Ratings</a>
+            </div> -->
+            <app-search></app-search>
+
+            <div class="hidden lg:flex lg:flex-1 gap-4 lg:justify-end">
+                <!-- <div class="flex items-center gap-1 cursor-pointer">
+                    <span class="material-symbols-outlined text-xl ">
+                        edit_square
+                    </span>
+                    <span class="text-sm font-medium text-gray-800">Publish Blog</span>
+                </div> -->
+                <div
+                    class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-600">
+                    <span class="font-semibold text-gray-600 dark:text-gray-300">JL</span>
+                </div>
+
+            </div>
+
+        </nav>
+        <!-- Mobile menu -->
+        <div *ngIf="openMobileMenu" class="lg:hidden" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 z-50"></div>
+            <div
+                class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <div class="flex items-center justify-between">
+                    <div class="flex lg:flex-1">
+                        <a routerLink="/" class="-m-1.5 p-1.5 flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="#4f46e5" class="size-6 -mt-0.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+
+                            <p class="text-2xl font-bold text-primary">RentHub</p>
+                        </a>
+                    </div>
+                    <button (click)="openMobileMenu=false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6 grid">
+                            <a (click)="openMobileMenu=false" [routerLink]="'create-post'"
+                                [routerLinkActive]="'text-primary text-lg  font-bold'"
+                                class="text-sm font-semibold leading-6 text-gray-900">Rent Home</a>
+                            <a [routerLink]="'my-listings'"
+                                [routerLinkActive]="'text-primary text-lg border-b-2 border-primary font-bold'"
+                                (click)="openMobileMenu=false" class="text-sm font-semibold leading-6 text-gray-900">My
+                                Listings</a>
+                            <a (click)="openMobileMenu=false" [routerLink]="'my-favorites'"
+                                [routerLinkActive]="'text-primary text-lg  font-bold'"
+                                class="text-sm font-semibold leading-6 text-gray-900">My favorites</a>
+                            <a [routerLink]="'my-ratings'" [routerLinkActive]="'text-primary text-lg font-bold'"
+                                (click)="openMobileMenu=false" href="#"
+                                class="text-sm font-semibold leading-6 text-gray-900">My Ratings</a>
+                        </div>
+                        <div class="py-6 grid space-y-1">
+                            <a *ngIf="!loggedInuser" routerLink="/login" (click)="openMobileMenu=false"
+                                [routerLinkActive]="'text-primary text-lg  font-bold'"
+                                class="text-sm font-semibold leading-6 text-gray-900">Log in <span
+                                    aria-hidden="true">&rarr;</span></a>
+                            <a routerLink="/register" *ngIf="!loggedInuser" (click)="openMobileMenu=false"
+                                [routerLinkActive]="'text-primary text-lg  font-bold'"
+                                class="text-sm font-semibold leading-6 text-gray-900 w-fit">Register<span
+                                    aria-hidden="true">&rarr;</span></a>
+                            <p *ngIf="loggedInuser" class="text-sm text-primary font-medium">Welcome {{loggedInuser}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</div>
+
+<!-- <header>
+    <div class="h-[60px] border border-b-gray-200 shadow-sm px-4 lg:px-12 py-2 flex justify-between items-center">
+        <div class="flex gap-10 items-center">
+            <h2 routerLink="/" class="font-bold text-xl text-primary cursor-pointer">
+                RentHub
+            </h2>
+            <ul class="flex gap-6 items-center pt-1">
+                <li [routerLink]="'create-post'" [routerLinkActive]="'text-primary border-b-2 border-primary font-bold'"
+                    class="text-[13px] cursor-pointer font-medium text-gray-700">Rent Home</li>
+                <li class="text-[13px]  cursor-pointer font-medium text-gray-700">My Listings</li>
+            </ul>
+        </div>
+        <div>
+            <ul class="flex space-x-6">
+                <li class="cursor-pointer text-base hover:border-b-2 hover:border-gray-900 hover:font-medium">
+                    <p>Login</p>
+                </li>
+                <li class="cursor-pointer text-base hover:border-b-2 hover:border-gray-900 hover:font-medium">
+                    <p>Register</p>
+                </li>
+                <li>
+                    <mat-icon aria-hidden="true" aria-label="Example home icon" class="cursor-pointer"
+                        fontIcon="account_circle"></mat-icon>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header> -->

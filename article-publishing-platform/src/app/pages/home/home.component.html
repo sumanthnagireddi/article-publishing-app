@@ -1,0 +1,65 @@
+<div>
+    <p class="font-medium text-xl text-gray-800">{{greet()}} {{currentuser?.displayName}}</p>
+    <div class="py-4">
+        <div class="mb-4">
+            <app-featured [featuredData]="currentFeaturedBlog" />
+            <div class="flex gap-1 justify-center py-2">
+                <div [ngClass]="item._id==currentFeaturedBlog?._id?'bg-emerald-400':'bg-gray-400 '"
+                    *ngFor="let item of popular_blogs?.slice(0,3)" (click)="currentFeaturedBlog = item"
+                    class="w-3.5 h-3.5 border-2 border-white cursor-pointer dark:border-gray-800 rounded-full"></div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+            <div>
+                <p class="text-gray-600 text-sm">Showing {{(currentPage - 1) * pageSize + 1 }} to {{ getToValue()}}
+                    Articles of {{popular_blogs?.length}} </p>
+            </div>
+            <div class="flex gap-4 items-center">
+                <div class="-mt-6">
+                    <label for="HeadlineAct" class="block text-sm font-medium text-gray-900"> Sort By </label>
+
+                    <select name="HeadlineAct" id="HeadlineAct"
+                        class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm">
+                        <option value="">Please select</option>
+                        <option value="JM">Most Recent</option>
+                        <option value="SRV">Oldest</option>
+                        <option value="JH">Popular</option>
+                        <option value="JH">Editor's Pick</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-1">
+                    <a (click)="previousPage()" [class.disabled]="currentPage === 1"
+                        class="inline-flex size-8 cursor-pointer items-center justify-center rounded border border-gray-300 bg-white text-gray-900 rtl:rotate-180 dark:border-gray-800 dark:bg-gray-900 dark:text-white">
+                        <span class="sr-only">Prev Page</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+
+                    <div>
+                        <label for="PaginationPage" class="sr-only">Page</label>
+
+                        <input type="number" disabled
+                            class="h-8 w-12 rounded border border-gray-300 bg-white p-0 text-center text-xs font-medium text-gray-900 [-moz-appearance:_textfield] dark:border-gray-800 dark:bg-gray-900 dark:text-white [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                            min="1" [value]="currentPage" id="PaginationPage" />
+                    </div>
+
+                    <a (click)="nextPage()" [class.disabled]="currentPage >= totalPages"
+                        class="inline-flex size-8 cursor-pointer items-center justify-center rounded border border-gray-300 bg-white text-gray-900 rtl:rotate-180 dark:border-gray-800 dark:bg-gray-900 dark:text-white">
+                        <span class="sr-only">Next Page</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    
+</div>

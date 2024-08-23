@@ -1,0 +1,7 @@
+::ng-deep .p-sidebar-close{
+    padding: 10px !important;
+    display: flex !important;
+    justify-content: end !important;
+    width: 100% !important;
+
+}

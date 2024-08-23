@@ -1,0 +1,25 @@
+<article class="group relative shadow-sm h-[300px]  border-gray-200 bg-white rounded-xl border">
+    <img [src]="data()?.photoUrl? data()?.photoUrl:'assets/user-dummy1.png' "
+        class="h-40 w-full rounded-xl object-cover border border-gray-300 shadow-sm  transition group-hover:grayscale-[50%] dark:shadow-gray-700/25" />
+
+    <div class="p-4">
+        <a href="#">
+            <h3 class="text-lg w-[100%] overflow-hidden font-medium text-gray-900 dark:text-white">
+                {{data()?.displayName?data()?.displayName:data()?.email}}
+            </h3>
+        </a>
+
+        <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+            user of online publishing platform since {{data()?.joinedOn | date}}
+        </p>
+    </div>
+    <div class="absolute bottom-2 px-4 pt-4 z-10 w-full flex justify-center  line-clamp-3 items-center gap-4">
+        <button [routerLink]="['author-details', data()?.userUid]"
+            class="px-4 py-1 rounded-lg flex gap-2 items-center justify-center text-sm font-medium w-full bg-emerald-200 text-emerald-600">Visit
+            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                    stroke="currentColor" class="size-3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+            </span></button>
+    </div>
+</article>

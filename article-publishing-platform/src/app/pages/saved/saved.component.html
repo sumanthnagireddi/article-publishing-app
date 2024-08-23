@@ -1,0 +1,17 @@
+<div class="py-2">
+    <div>
+        <p class="font-medium text-lg">My Saved Articles</p>
+        <p class="line-clamp-3 text-xs text-gray-600">Showing all the saved articles </p>
+    </div>
+    <div class="py-2 ">
+        <ng-container *ngIf="savedArticles&&savedArticles.length>0;else nodata">
+            <div class="my-2" *ngFor="let item of savedArticles">
+                <app-article-card (refreshEvent)="getData()"  [data]="item" />
+            </div>
+        </ng-container>
+        <ng-template #nodata>
+            <app-no-data />
+        </ng-template>
+
+    </div>
+</div>

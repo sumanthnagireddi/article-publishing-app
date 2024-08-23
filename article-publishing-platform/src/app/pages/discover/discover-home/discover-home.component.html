@@ -1,0 +1,68 @@
+<div class="py-4">
+    <div class="flex justify-center items-center gap-2">
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-7" viewBox="0 0 512 512">
+                <path
+                    d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm306.7 69.1L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+            </svg>
+        </span>
+        <span class="text-3xl font-bold">Discover</span>
+    </div>
+    <p class="text-center py-1 text-gray-700 text-lg">Step into a new zone , join a new conversation</p>
+
+    <div class="flex justify-center items-center gap-2 pt-8">
+        <app-search [width]="700"></app-search>
+    </div>
+    <div class="text-center py-4">
+        <span class="font-medium text-gray-700 text-sm">Trending Keywords : <span *ngFor="let item of keyWords"
+                class="px-4 py-0.5 bg-gray-200/75 text-gray-600 rounded-xl mx-2">#{{item}}</span></span>
+    </div>
+    <div class="py-4 relative">
+        <h3 class="font-medium text-xl text-gray-700 py-4">Reader's Choice</h3>
+        <button (click)="prevRow()" [disabled]="currentPage === 0" class="absolute z-10 -left-7 top-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                stroke="currentColor"
+                class=" border-none cursor-pointer rounded-full hover:bg-emerald-200 bg-emerald-100 text-emerald-600 shadow-sm  w-7 h-7 p-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+        </button>
+        <div class="grid grid-cols-4 gap-4 mx-4">
+            <ng-container *ngFor="let card of currentItems">
+                <app-reader-card [data]="card"></app-reader-card>
+            </ng-container>
+        </div>
+        <button (click)="nextRow()" [disabled]="currentPage >= maxPage" class="absolute -right-7 z-10 top-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor"
+                class=" border-none cursor-pointer rounded-full hover:bg-emerald-200 bg-emerald-100 text-emerald-600 shadow-sm  w-7 h-7 p-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+
+
+        </button>
+    </div>
+    <div class="py-4 relative">
+        <h3 class="font-medium text-xl text-gray-700 py-4">Rising Authors</h3>
+        <button (click)="prevAuthorsRow()" [disabled]="currentAuthorPage === 0" class="absolute z-10 -left-7 top-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                stroke="currentColor"
+                class=" border-none cursor-pointer rounded-full hover:bg-emerald-200 bg-emerald-100 text-emerald-600 shadow-sm  w-7 h-7 p-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+        </button>
+        <div class="grid grid-cols-4 gap-4 mx-4">
+            <ng-container *ngFor="let card of currentAuthors">
+                <app-author-card [data]="card"></app-author-card>
+            </ng-container>
+        </div>
+        <button (click)="nextauthorsRow()" [disabled]="currentAuthorPage >= authorsMaxPage" class="absolute -right-7 z-10 top-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor"
+                class=" border-none cursor-pointer rounded-full hover:bg-emerald-200 bg-emerald-100 text-emerald-600 shadow-sm  w-7 h-7 p-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+
+
+        </button>
+    </div>
+</div>

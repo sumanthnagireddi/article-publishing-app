@@ -1,0 +1,39 @@
+<div class="flex gap-2 py-2 ">
+    <div class="relative w-10  h-10 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-600">
+        <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
+            </path>
+        </svg>
+    </div>
+    <div class="flex-1">
+        <p class="text-sm font-medium text-gray-800">{{comment()?.['username']}}</p>
+        <small class="cursor-pointer text-gray-600 ">July 30 12 pm</small>
+        <p class="pt-2 text-sm text-gray-700">
+            {{comment()?.['body']}}
+        </p>
+        <div class="flex items-center justify-between gap-2">
+            <div (click)="showReplies=!showReplies"
+                class="flex cursor-pointer text-gray-500 items-center gap-x-1 dark:text-gray-400 ">
+                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                    </svg>
+                </span>
+                <span class="text-sm ">{{(comment()?.children)?(comment()?.children?.length):0}} Replies</span>
+            </div>
+            <small (click)="handleReply(comment()?._id)"
+                class="text-sm text-emerald-600 cursor-pointer flex justify-end max-w-xs font-medium py-2">Reply</small>
+        </div>
+    </div>
+</div>
+<div class="ml-10  border-l-2 pl-2">
+    <app-comment-form (exportComment)="getFormData($event)" [isNestedComment]="true" [parentId]="replyingId"
+        [showProfile]="false" *ngIf="isReplying  && replyingId==comment()._id" />
+</div>
+<ng-container *ngIf="showReplies">
+    <div class="ml-10 border-l-2 pl-2" *ngFor="let child of comment()?.children">
+        <app-comment-holder (exportCommentdata)="getFormData($event)" [comment]="child" />
+    </div>
+</ng-container>

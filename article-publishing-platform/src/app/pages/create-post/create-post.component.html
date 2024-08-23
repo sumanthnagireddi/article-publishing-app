@@ -1,0 +1,105 @@
+<div class="flex items-center justify-between">
+    <div class="flex gap-2 items-center">
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6 border cursor-pointer rounded-full w-10 h-10 p-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+            </svg>
+        </span>
+        <div>
+            <p class="font-medium text-base"> {{isBasicDetailsFilled ? articleForm.value?.title:'Create Post'}}</p>
+            <p class="line-clamp-3 text-xs/relaxed"> {{ getDescription()}}</p>
+        </div>
+
+    </div>
+    <div class="flex gap-4">
+        <a routerLink="create-post"
+            class="block rounded-lg cursor-pointer bg-gray-300  text-gray-700 text-center px-4 py-2 text-sm font-medium ">
+            Save Draft
+        </a>
+        <a *ngIf="isBasicDetailsFilled" routerLink="create-post"
+            class="block rounded-lg cursor-pointer bg-blue-300  text-blue-700 text-center px-4 py-2 text-sm font-medium ">
+            Schedule
+        </a>
+        <a *ngIf="isBasicDetailsFilled" (click)="handlePublishArticle()"
+            class="block rounded-lg cursor-pointer bg-emerald-300 active::bg-emerald-200  text-emerald-700 text-center px-4 py-2 text-sm font-medium hover:text-emerald-700">
+            Publish Blog
+        </a>
+    </div>
+
+</div>
+<div [formGroup]="articleForm" *ngIf="!isBasicDetailsFilled" class="px-12 py-4 ">
+    <div class="mb-4">
+        <label for="articleTitle" class="block text-sm font-medium text-gray-900 dark:text-white">Article title</label>
+
+        <input
+            [ngClass]="{'outline-red-600 ring-red-600 border-red-600 placeholder:text-red-600':isControlInvalid('title')}"
+            formControlName="title" type="text" id="articleTitle" placeholder="Enter your article title"
+            class="mt-1  w-full rounded-md border-gray-300 shadow-sm placeholder:text-xs sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+        <small class="text-red-600" *ngIf="isControlInvalid('title')">Please enter your article title</small>
+    </div>
+    <div class="mb-4">
+        <label for="articleDesc" class="block  text-sm font-medium text-gray-900 dark:text-white">Article
+            Description</label>
+
+        <input formControlName="description" type="text" id="articleDesc" placeholder="Enter your article Description"
+            [ngClass]="{'outline-red-600 ring-red-600 border-red-600 placeholder:text-red-600':isControlInvalid('description')}"
+            class="mt-1 placeholder:text-xs  w-full rounded-md border-gray-300 shadow-sm sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+        <small class="text-red-600" *ngIf="isControlInvalid('description')">Please enter your article
+            description</small>
+
+    </div>
+    <div class="mb-4">
+        <label for="articleTags" class="block  text-sm/none font-medium text-gray-900 dark:text-white">Article
+            Tags</label>
+        <small class="text-xs/tight text-blue-600">please enter your tags, with comma seperated values.</small>
+        <input formControlName="tags" type="text" id="articleTags"
+        [ngClass]="{'outline-red-600 ring-red-600 border-red-600 placeholder:text-red-600':isControlInvalid('tags')}"
+
+            placeholder="Enter your article tags with comma seperated values."
+            class="mt-1 placeholder:text-xs  w-full rounded-md border-gray-300 shadow-sm sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+        <small class="text-red-600" *ngIf="isControlInvalid('tags')">Please enter your article
+            tags</small>
+    </div>
+    <div class="mb-2">
+        <label for="articleTags" class="block  text-sm/none font-medium text-gray-900 dark:text-white">Article
+            Cover photo</label>
+        <small class="text-xs/tight text-blue-600">please upload high quality image.</small>
+
+        <div class="flex items-center justify-center w-full">
+            <label for="dropzone-file"
+            [ngClass]="{'outline-red-600 ring-red-600 border-red-600 placeholder:text-red-600':isControlInvalid('articlePhoto')}"
+
+                class="flex flex-col items-center justify-center w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                    </svg>
+                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to
+                            upload</span></p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                </div>
+                <input (change)="uploadImages($event)" id="dropzone-file" type="file" class="hidden" />
+            </label>
+        </div>
+        <small class="text-red-600" *ngIf="isControlInvalid('articlePhoto')">Please upload your article photo</small>
+
+    </div>
+
+</div>
+<div class="my-4" *ngIf="isBasicDetailsFilled">
+    <quill-editor (onContentChanged)="handleContent($event)"></quill-editor>
+</div>
+
+<div class="flex gap-4  justify-end">
+    <a (click)="isBasicDetailsFilled ? isBasicDetailsFilled=false:router.navigate(['/'])"
+        class="block rounded-lg cursor-pointer bg-gray-300  text-gray-700 text-center px-4 py-2 text-sm font-medium ">
+        Cancel
+    </a>
+    <a *ngIf="!isBasicDetailsFilled" (click)="handleNext()"
+        class="block rounded-lg cursor-pointer bg-blue-300  text-blue-700 text-center px-4 py-2 text-sm font-medium ">
+        Next
+    </a>
+</div>

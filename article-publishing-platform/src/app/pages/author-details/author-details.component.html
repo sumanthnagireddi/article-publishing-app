@@ -1,0 +1,36 @@
+<div class="py-12 px-4">
+    <div class="max-w-xl flex justify-between items-center">
+        <h3 class="text-3xl py-1 capitalize font-medium text-gray-900">{{authorDetails?.displayName}} </h3>
+        <button (click)="followUser()"
+            class="px-8 hover:bg-emerald-300 hover:text-emerald-700 rounded-lg  py-1 text-sm font-medium  bg-emerald-200 text-emerald-600">{{this.isFollowing
+            ? 'Unfollow':'Follow'}}
+        </button>
+    </div>
+    <p class="text-sm pb-2 text-gray-500">An Software professional with 2.8 years of experience , specializing in
+        angular</p>
+    <small class="text-emerald-600 font-medium">Member since August 2024.</small> &nbsp;
+    <small class="font-medium text-emerald-600"> {{authorDetails?.followers?authorDetails?.followers?.length:0}}
+        Followers | {{authorDetails?.following?.length}} Following</small>&nbsp;
+    <p class="text-emerald-600 font-medium pt-1 text-xs"> {{authorDetails?.email}} </p>
+    <div class="py-6">
+        <div class="">
+            <div class="border-b w-full border-gray-200 dark:border-gray-700">
+                <nav class="-mb-px flex gap-6" aria-label="Tabs">
+                    <a (click)="updateCurrentTab(tab)"
+                        [ngClass]="currentTab() == tab? 'text-emerald-600 border-emerald-600 hover:border-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:border-emerald-600 dark:hover:text-emerald-200' :'text-gray-500 hover:border-gray-300 border-none hover:text-gray-700 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-gray-200'  "
+                        *ngFor="let tab of tabNames"
+                        class="shrink-0 cursor-pointer border-b-2   px-1 pb-2 text-sm font-medium  ">
+                        {{tab}}
+                    </a>
+                </nav>
+            </div>
+            <div class="p-4">
+                <div *ngIf="currentTab() == 'Home'">
+                    <div *ngFor="let item of articles" class="mb-4">
+                        <app-article-card [data]="item"></app-article-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
