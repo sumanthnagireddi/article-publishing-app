@@ -1,4 +1,5 @@
-export default function FeatureCard() {
+export default function FeatureCard(props) {
+  const { data } = props;
   return (
     <div className="w-full py-4">
       <div className="rounded-lg card h-auto relative">
@@ -8,12 +9,10 @@ export default function FeatureCard() {
         />
         <div className="px-4 py-2">
           <p className="text-base font-medium text-gray-900 cursor-pointer hover:text-emerald-600">
-            Standalone Components
+            {data.articleName}
           </p>
           <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
-            Standalone Components are a new feature in Angular 17 that allows
-            you to build and use components without the need for NgModules. This
-            feature simplifies
+            {data.articleDescription}
           </p>
         </div>
         <div className=" px-4 py-4 z-10  w-full flex justify-between  line-clamp-3 items-center gap-4">
@@ -25,7 +24,7 @@ export default function FeatureCard() {
               24 Aug
             </p>
             <p className="text-gray-800  dark:text-gray-400 px-2 py-0.5 rounded-xl text-sm bg-gray-200">
-              1 min read
+              {data.readTime} min read
             </p>
             <div className="flex text-gray-500 items-center gap-x-1 dark:text-gray-400 ">
               <span>
@@ -49,7 +48,7 @@ export default function FeatureCard() {
                   />
                 </svg>
               </span>
-              <span className="text-sm ">20</span>
+              <span className="text-sm ">{data.views}</span>
             </div>
             <div className="flex text-gray-500 items-center gap-x-1 dark:text-gray-400 ">
               <span>
@@ -68,7 +67,7 @@ export default function FeatureCard() {
                   />
                 </svg>
               </span>
-              <span className="text-sm ">10</span>
+              <span className="text-sm ">{data.comments.length}</span>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -108,7 +107,7 @@ export default function FeatureCard() {
               </svg>
 
               <p className="font-medium text-sm cursor-pointer hover:underline ">
-                Sumanth
+                {data.author}
               </p>
             </div>
           </div>

@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
 import formatDate from "../utils/DateFormat";
 
 export default function ArticleCard(props) {
   const { data } = props;
- 
+
   return (
     <article id="article" className="group   card sm:flex bg-white rounded-xl ">
       <div className="p-4 relative flex-1">
-        <a className="cursor-pointer">
-          <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+          <Link
+            to={`discover/article-details/${data?._id}`}
+            className="text-xl font-medium text-gray-900 dark:text-white"
+          >
             {data?.articleName}
-          </h3>
-        </a>
+          </Link>
 
         <p className="mt-2  line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
           {data.articleDescription}
