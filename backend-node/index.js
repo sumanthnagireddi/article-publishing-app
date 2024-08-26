@@ -3,7 +3,7 @@ import { connectMongoDB } from "./src/connection/connection.js";
 import router from "./src/routes/articles.js";
 import userRouter from "./src/routes/user.js";
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const uri = "mongodb+srv://sumanthnagireddi:2516@blogstore.m5tv4ca.mongodb.net/?retryWrites=true&w=majority&appName=blogstore"
 //mongo connection
 connectMongoDB(uri)
