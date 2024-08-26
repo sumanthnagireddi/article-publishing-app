@@ -4,9 +4,9 @@ import router from "./src/routes/articles.js";
 import userRouter from "./src/routes/user.js";
 const app = express();
 const PORT = 3000;
-
+const uri = "mongodb+srv://sumanthnagireddi:2516@blogstore.m5tv4ca.mongodb.net/?retryWrites=true&w=majority&appName=blogstore"
 //mongo connection
-connectMongoDB("mongodb://127.0.0.1:27017/online-publishing-app")
+connectMongoDB(uri)
   .then(console.log("connection success"))
   .catch("error occured");
 
